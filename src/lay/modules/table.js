@@ -792,7 +792,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
             //是否允许单元格编辑
             if (typeof item3.edit === 'function')
             {
-              attr.push('data-edit="'+ content.edit() +'"');
+              attr.push('data-edit="'+ item3.edit(item1) +'"');
             }else if (typeof item3.edit === 'boolean')
             {
               attr.push('data-edit="'+ item3.edit +'"');
