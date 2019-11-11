@@ -823,15 +823,23 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
               //渲染不同风格的列
               switch(item3.type){
                 case 'checkbox':
-                  return '<input type="checkbox" name="layTableCheckbox" lay-skin="primary" '+ function(){
+                {
+                  var html = '<input type="checkbox" name="layTableCheckbox" lay-skin="primary" ' + function () {
                     //如果是全选
-                    if(item3[checkName]){
+                    if (item3[checkName]) {
                       item1[checkName] = item3[checkName];
                       return item3[checkName] ? 'checked' : '';
                     }
                     return tplData[checkName] ? 'checked' : '';
-                  }() +'>';
-                break;
+                  }() + '>';
+                  if (item3.anbled == null) {
+                    return html;
+                  } else if (typeof item3.anbled == 'function') {
+                    return item3.anbled(item1) == true ? html : "";
+                  }
+
+                  break;
+                }
                 case 'radio':
                   if(tplData[checkName]){
                     thisCheckedRowIndex = i1;
