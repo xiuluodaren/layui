@@ -68,7 +68,7 @@ var argv = require('minimist')(process.argv.slice(2), {
     }
 
     return gulp.src(src)
-//.pipe(uglify())
+.pipe(uglify())
      .pipe(header.apply(null, note))
     .pipe(gulp.dest('./'+ dir));
   }
@@ -84,7 +84,7 @@ var argv = require('minimist')(process.argv.slice(2), {
     ,dir = destDir(ver);
 
     return gulp.src(src)
-//.pipe(uglify())
+.pipe(uglify())
       .pipe(concat('layui.all.js', {newLine: ''}))
       .pipe(header.apply(null, note))
     .pipe(gulp.dest('./'+ dir));
@@ -109,7 +109,7 @@ var argv = require('minimist')(process.argv.slice(2), {
     src.push('./src/lay/modules/mobile.js');
 
     return gulp.src(src)
-//.pipe(uglify())
+.pipe(uglify())
       .pipe(concat('mobile.js', {newLine: ''}))
       .pipe(header.apply(null, note))
     .pipe(gulp.dest('./'+ dir + '/lay/modules/'));
