@@ -1890,7 +1890,8 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
       }
       if(item[table.config.checkName]){
         nums++;
-        arr.push(table.clearCacheKey(item));
+        // arr.push(table.clearCacheKey(item));
+        arr.push(item);
       }
     });
     return {
