@@ -1,5 +1,5 @@
- 
- 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +113,7 @@ body{padding: 20px; /*overflow-y: scroll;*/}
         <th lay-data="{field:'username', width:200}">昵称</th>
         <th lay-data="{field:'joinTime', width:150}">加入时间</th>
         <th lay-data="{field:'sign'}">签名</th>
-      </tr> 
+      </tr>
     </thead>
     <tbody>
       <tr>
@@ -182,7 +182,7 @@ body{padding: 20px; /*overflow-y: scroll;*/}
 layui.use('table', function(){
   var table = layui.table;
   //return;
-  
+
   //渲染
   window.ins1 = table.render({
     elem: '#test'
@@ -192,9 +192,9 @@ layui.use('table', function(){
     ,url: 'json/table/demo1.json'
     //,size: 'lg'
     ,page: {
-      
+
     }
-    
+
     ,autoSort: false
     //,loading: false
     ,totalRow: true
@@ -236,7 +236,7 @@ layui.use('table', function(){
     }
     */
   });
-  
+
   //工具栏事件
   table.on('toolbar(test)', function(obj){
     var checkStatus = table.checkStatus(obj.config.id);
@@ -278,9 +278,9 @@ layui.use('table', function(){
     console.log(obj);
     //layer.closeAll('tips');
   });
-  
-  
-  
+
+
+
   table.render({
     elem: '#test2'
     ,url: 'json/table/demo1.json'
@@ -327,21 +327,24 @@ layui.use('table', function(){
   table.on('radio(test)', function(obj){
     console.log(obj)
   });
-  
+
   //监听表格单选框选择
   table.on('rowDouble(test)', function(obj){
     console.log(obj);
   });
-  
+
   //监听单元格编辑
   table.on('edit(test)', function(obj){
     var value = obj.value //得到修改后的值
     ,data = obj.data //得到所在行所有键值
     ,field = obj.field; //得到字段
-    
+
     console.log(obj)
+      obj.update({
+          "takeHomePay" : 11111
+      })
   });
-  
+
   //监听行工具事件
   table.on('tool(test)', function(obj){
     var data = obj.data;
@@ -363,11 +366,11 @@ layui.use('table', function(){
       });
     }
   });
-  
+
   //监听排序
   table.on('sort(test)', function(obj){
     console.log(this)
-    
+
     //return;
     layer.msg('服务端排序。order by '+ obj.field + ' ' + obj.type);
     //服务端排序
@@ -380,9 +383,9 @@ layui.use('table', function(){
       }
     });
   });
-  
+
   //return;
-  
+
   //直接赋值数据
   table.render({
     elem: '#demo'
@@ -493,14 +496,14 @@ layui.use('table', function(){
     ,skin: 'row' //表格风格
     ,even: true
     //,size: 'lg' //尺寸
-    
+
     ,page: true //是否显示分页
     ,limits: [3,5,10]
     ,limit: 3 //每页默认显示的数量
     //,loading: false //请求数据时，是否显示loading
   });
-  
-  
+
+
   var $ = layui.jquery, active = {
     parseTable: function(){
       table.init('parse-table-demo', {

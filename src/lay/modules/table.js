@@ -1501,9 +1501,10 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
         ,update: function(fields){ //修改行数据
           fields = fields || {};
           layui.each(fields, function(key, value){
+            data[key] = value;
             if(key in data){
               var templet, td = tr.children('td[data-field="'+ key +'"]');
-              data[key] = value;
+              // data[key] = value;
               that.eachCols(function(i, item2){
                 if(item2.field == key && item2.templet){
                   templet = item2.templet;
