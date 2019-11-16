@@ -798,6 +798,10 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
               attr.push('data-edit="'+ item3.edit +'"');
             }
 
+            //单元格编辑类型,就是input的type
+            if (item3.editType != null)
+              attr.push('data-edit-type="'+ item3.editType +'"');
+
             if(item3.align) attr.push('align="'+ item3.align +'"'); //对齐方式
             if(item3.templet) attr.push('data-content="'+ content +'"'); //自定义模板
             if(item3.toolbar) attr.push('data-off="true"'); //行工具列关闭单元格事件
@@ -1640,14 +1644,23 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
     that.layBody.on('click', 'td', function(e){
       var othis = $(this)
       ,field = othis.data('field')
-      ,editType = othis.data('edit')
+      ,edit = othis.data('edit')
+      ,editType = othis.data('editType')
       ,elemCell = othis.children(ELEM_CELL);
 
       if(othis.data('off')) return; //不触发事件
 
       //显示编辑表单
-      if(editType){
-        var input = $('<input class="layui-input '+ ELEM_EDIT +'">');
+      if(edit){
+
+        var inputStr = '<input class="layui-input '+ ELEM_EDIT + '"';
+        if (editType != null)
+        {
+          inputStr += ' type="' + editType + '"';
+        }
+        inputStr += '/>';
+
+        var input = $(inputStr);
         input[0].value = othis.data('content') || elemCell.text();
         othis.find('.'+ELEM_EDIT)[0] || othis.append(input);
         input.focus();
