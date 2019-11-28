@@ -1915,7 +1915,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
 
     if(device.ie) return hint.error('IE_NOT_SUPPORT_EXPORTS');
 
-    alink.href = 'data:'+ textType +';charset=utf-8,\ufeff'+ encodeURIComponent(function(){
+    alink.href = 'data:'+ textType +';charset=gbk,\ufeff'+ encodeURIComponent(function(){
       var dataTitle = [], dataMain = [], dataTotal = [];
 
       //表头和表体
