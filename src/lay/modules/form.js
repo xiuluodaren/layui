@@ -47,16 +47,16 @@ layui.define('layer', function(exports){
           /(^\d{15}$)|(^\d{17}(x|X|\d)$)/
           ,'请输入正确的身份证号'
         ]
-        ,minLength:function (value,item) {
-          if (value.length < 8)
+        ,minLength:function (value,item,arg) {
+          if (value.length < arg)
           {
-            return '长度必须大于8';
+            return '长度必须大于' + arg;
           }
         }
-        ,maxLength:function (value,item) {
-          if (value.length > 8)
+        ,maxLength:function (value,item,arg) {
+          if (value.length > arg)
           {
-            return '长度必须小于等于8';
+            return '长度必须小于等于' + arg;
           }
         }
       }
@@ -651,6 +651,7 @@ layui.define('layer', function(exports){
         ,errorText = '' //错误提示文本
         //参数  minLength:10  形式
         ,arg = thisVer.split(':').length > 1 ? thisVer.split(':')[1] : null
+        ,thisVer = thisVer.split(':')[0]
         ,isFn = typeof verify[thisVer] === 'function';
 
         //匹配验证规则
